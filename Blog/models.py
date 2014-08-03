@@ -2,7 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-
+class PostCategory(models.Model):
+	description = models.CharField(max_length=200)
+	
+	class Meta: db_table='post_category'
+	
+	def __unicode__(self):
+		return '%s' % self.description
 
 class Post(models.Model):
 	title = models.CharField(max_length=200)
@@ -11,5 +17,9 @@ class Post(models.Model):
 	date = models.DateTimeField('date created')
 	category = models.ForeignKey(PostCategory)
 	
-class PostCategory(models.Model):
-	description(models.CharField(max_length=200)
+	class Meta:
+		db_table='post'
+		
+	def __unicode__ (self):
+		return '%s' % self.title
+		
